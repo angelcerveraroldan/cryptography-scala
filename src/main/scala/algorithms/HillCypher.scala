@@ -8,14 +8,15 @@ import scala.util.Using
 import scala.language.postfixOps
 
 case class HillCypher(providedKey: Option[Matrix] = None)
-  extends EncryptionAlgo {
+    extends EncryptionAlgo {
   val defaultKey: Matrix = Matrix(2, 2, List(List(3, 3), List(2, 5)))
   val key = providedKey.getOrElse(defaultKey)
   val inverseOfKey = key
     .invert2x2(Some(95))
     .getOrElse(throw new Exception("Please use a key with an inverse mod 95"))
 
-  def apply(): Unit = println("running hill cypher")
+  def encrypt(toEncrypt: String, encryptionType: Encrypt): Unit =
+    println("running hill cypher")
 
   def encryptString(s: String): String = {
     s.grouped(2)
