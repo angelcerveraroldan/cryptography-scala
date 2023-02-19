@@ -38,6 +38,14 @@ class HillCypherTest
     }
   }
 
+  "decrypt string" should {
+    val h = HillCypher()
+
+    "encrypt hello" in {
+      h.decryptString("wt~-.W{isVCz{lY8") shouldBe "They don't know;"
+    }
+  }
+
   "encrypt file" should {
     val h = HillCypher()
 
@@ -71,7 +79,7 @@ class HillCypherTest
 
       println(System.currentTimeMillis() - time)
 
-      h.decrypt(
+      h.decryptFile(
         "src/test/scala/enc_hamlet.txt",
         "src/test/scala/dec_hamlet.txt"
       )
