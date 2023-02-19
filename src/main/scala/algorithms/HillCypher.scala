@@ -14,12 +14,15 @@ case class HillCypher(providedKey: Option[Matrix] = None)
   val inverseOfKey = key
     .invert2x2(Some(95))
     .getOrElse(throw new Exception("Please use a key with an inverse mod 95"))
-  
+
   def encryptString(s: String): String = {
     s.grouped(2)
       .flatMap(chars => encryptVec(chars.toList))
       .foldRight("")(_ + _)
   }
+
+  def decryptString(s: String): String =
+    HillCypher(Some(inverseOfKey)).encryptString(s)
 
   def encryptFile(path: String, to: String): Unit = {
     val fileWriter = new FileWriter(new File(to))
@@ -34,7 +37,7 @@ case class HillCypher(providedKey: Option[Matrix] = None)
     fileWriter.close()
   }
 
-  def decrypt(path: String, to: String): Unit =
+  def decryptFile(path: String, to: String): Unit =
     HillCypher(providedKey = Some(inverseOfKey)).encryptFile(path, to)
 
   /*
