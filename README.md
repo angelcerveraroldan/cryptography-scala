@@ -32,7 +32,7 @@ The main folders in this project are:
 There is also `src/main/scala/math`, since this project main objective was to learn, I decided that it would be better
 to use no math libs, and to implement as much as possible here.
 
-`src/main/notes`, here is a companion md file for all classes `src/main/scala/math` and also for all algorithms
+`src/main/notes`, here is a companion md file for all classes in `src/main/scala/math` and also for all algorithms
 in `src/main/scala/algorithms`
 
 ```
