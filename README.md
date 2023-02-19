@@ -14,7 +14,7 @@ also try to do this project using rust as a means of learning the language.
 
 # Currently supported algorithms
 
-1. (Hill Cypher)[]
+1. [Hill Cypher](src/main/notes/algorithms/hill-cypher.md)
 
 ## Coming Soon
 
