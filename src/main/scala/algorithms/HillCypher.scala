@@ -15,6 +15,9 @@ case class HillCypher(providedKey: Option[Matrix] = None)
     .invert2x2(Some(95))
     .getOrElse(throw new Exception("Please use a key with an inverse mod 95"))
 
+  def encrypt(toEncrypt: String, encryptionType: Encrypt): Unit =
+    println("running hill cypher")
+
   def encryptString(s: String): String = {
     s.grouped(2)
       .flatMap(chars => encryptVec(chars.toList))
@@ -56,7 +59,7 @@ case class HillCypher(providedKey: Option[Matrix] = None)
        * This will happen at max one time, so the tail works well. If we change the algorithm to group string into n
        * chars, then this should change, but for that we also need to add a lot of features to the Matrix
        * */
-      
+
       if (l.length == 1) encryptVec(' ' +: vec).tail
       else
         (key * vec.map(_.toInt - 32))
