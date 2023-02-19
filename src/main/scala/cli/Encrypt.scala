@@ -1,5 +1,14 @@
 package cli
+
+import algorithms.HillCypher
 import org.backuity.clist._
+
+class EncryptionType();
+
+case class EncryptString() extends EncryptionType
+
+case class EncryptFile() extends EncryptionType
+
 class Encrypt() extends Command(description = "Encrypt a file or a string") {
   var algo = arg[String](description = """
       |Algorithm
@@ -10,6 +19,7 @@ class Encrypt() extends Command(description = "Encrypt a file or a string") {
 
   var inPath =
     opt[Option[String]](description = "Path of file to encrypt")
+
   var outPath =
     opt[Option[String]](
       description = """
@@ -18,7 +28,16 @@ class Encrypt() extends Command(description = "Encrypt a file or a string") {
           |""".stripMargin
     )
 
-  def run(): Unit = {
-    println(outPath)
+  var (toEncrypt: String, encryptionType: EncryptionType) =
+    (string, inPath) match {
+      case (Some(string), None) => (string, EncryptString)
+      case (None, Some(path))   => (path, EncryptFile)
+      case (Some(_), Some(_))   => ???
+      case (None, None)         => ???
+    }
+
+  def run(): Unit = algo.toLowerCase match {
+    case "hc" | "hill cypher" => HillCypher()
   }
+
 }
