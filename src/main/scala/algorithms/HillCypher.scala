@@ -14,10 +14,7 @@ case class HillCypher(providedKey: Option[Matrix] = None)
   val inverseOfKey = key
     .invert2x2(Some(95))
     .getOrElse(throw new Exception("Please use a key with an inverse mod 95"))
-
-  def encrypt(toEncrypt: String, encryptionType: Encrypt): Unit =
-    println("running hill cypher")
-
+  
   def encryptString(s: String): String = {
     s.grouped(2)
       .flatMap(chars => encryptVec(chars.toList))
