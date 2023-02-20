@@ -63,3 +63,8 @@ in `src/main/scala/algorithms`
 │           │   └── MatrixTest.scala
 │           └── txt.txt
 ```
+
+
+# Benchmarking
+1. Hamlet (191kB -- 191,316 characters) was encrypted in 131ms 
+2. A JSON file (320MB -- 320,438,954 characters) was encrypted in 30s
